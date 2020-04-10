@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <van-button type="primary" bind:click="showPopup">弹出弹框</van-button>
+    <van-button plain type="primary" bind:click="showPopup2">弹出弹框2</van-button>
+    <van-button plain type="info" bind:click='goToPage'>跳转日历页面</van-button>
+  </view>
+
+  <van-popup show="{{ show }}" bind:close="onClose"
+    closeable position="bottom" custom-style="height: 20%"
+    close-icon-position="bottom-left" close-icon="close"
+    >
+    我是弹出框内容 closeable可以删除 postion也可以删除
+  </van-popup>
+<van-transition show="{{ show2 }}" custom-class="block">
+  内容
+</van-transition>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+    <van-image
+      vertical
+      style='border:2rpx solid;'
+      width="375rpx"
+      height="375rpx"
+      fit="cover"
+      src="{{userInfo.avatarUrl}}"
+       bindtap="bindViewTap"
+    />
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>

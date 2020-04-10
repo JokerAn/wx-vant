@@ -1,0 +1,17 @@
+<van-checkbox-group value="{{ result }}" bind:change="onChange">
+  <van-checkbox name="a">复选框 a</van-checkbox>
+  <van-checkbox name="b">复选框 b</van-checkbox>
+  <van-checkbox name="c">复选框 c</van-checkbox>
+</van-checkbox-group>
+<van-datetime-picker
+  type="datetime"
+  value="{{ currentDate }}"
+  min-date="{{ minDate }}"
+  max-date="{{ maxDate }}"
+  bind:input="onInput"
+/>
+<van-picker columns="{{ columns }}" bind:change="onChange2" default-index="{{ 2 }}" />
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+ <van-button type="primary" bind:click="dialogShow">弹出dialog</van-button>
+<van-calendar show-title="{{false}}"  title="日历" poppable="{{false}}" />
