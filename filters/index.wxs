@@ -1,0 +1,46 @@
+var filters = {
+
+  nianyuerigang: function (time) {
+
+    if (!time) return '';
+    var nian = time.slice(0,4);
+    var yue = time.slice(4,6);
+    var ri = time.slice(-2);
+
+    return nian +'-'+yue+'-'+ ri;
+    
+  },
+  qiandaoType:function(type){
+    console.log(type)
+    var text='';
+    switch (type){
+      case 0:
+      text='未签到'
+      break
+      default:
+      text='已签到'
+    }
+    return text
+  }, 
+  sex:function(sexValue){
+    var text='';
+    switch (sexValue){
+      case 1:
+        text='男'
+        break
+      case 2:
+        text='女'
+        break
+      default:
+      text='未知'
+    }
+    return text
+  } 
+
+}
+
+module.exports = {
+  nianyuerigang: filters.nianyuerigang,
+  qiandaoType: filters.qiandaoType,
+  sex: filters.sex
+}

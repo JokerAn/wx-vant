@@ -1,0 +1,8 @@
+<!--components/test-component/index.wxml-->
+<slot name="postion-1"></slot>
+<view class="inner">
+  <view>我是组件内部定义的数据-{{msg}}</view>
+  <text>我是传递过来的数据innerText-{{innerText}}</text>
+  <text>我是传递过来的数据Objects-{{Objects.name}}</text>
+</view>
+<slot name="postion-2"></slot>

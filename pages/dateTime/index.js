@@ -12,6 +12,14 @@ Page({
     currentDate: new Date().getTime(),
     columns: ['杭州', '宁波', '温州', '嘉兴', '湖州']
   },
+  onLoad(options){
+    console.log(options)
+    console.log(this.data)
+  },
+  onShow:function(options){
+    console.log(options)
+    console.log(this.data)
+  },
   onChange(event) {
     this.setData({
       result: event.detail

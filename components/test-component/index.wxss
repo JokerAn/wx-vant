@@ -1,0 +1,4 @@
+/* components/test-component/index.wxss */
+.inner {
+  color: blue;
+}

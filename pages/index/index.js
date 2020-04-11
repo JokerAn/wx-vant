@@ -1,15 +1,22 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+import {myUtils} from '../../utils/util'
+var util =new myUtils()
+import {myHttp} from '../../utils/http'
+var axios =new myHttp()
+import {myApi} from '../../utils/api'
+var apis =new myApi()
 Page({
   data: {
+    personInfo:{name:'张三',age:20},
     show:false,
     show2:false,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    nowTime:''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -17,7 +24,21 @@ Page({
       url: '../logs/logs'
     })
   },
+  onShow:function(){
+    let loginForm = {
+      username: 'wei.xia@ambow.com',
+      password: 'Ambow99999999'.split('')
+    };
+    axios.request('post',apis.api.login,loginForm).then((result)=>{
+      console.log('result',result)
+    }).catch(err=>{
+      console.log('err',err)
+    })
+  },
   onLoad: function () {
+    this.setData({
+      nowTime:util.getChinaTime(new Date(),'-')
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -70,19 +91,6 @@ Page({
   goToPage(){
     wx.navigateTo({
       url: '/pages/dateTime/index?id=1',
-      events: {
-        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-        acceptDataFromOpenedPage: function(data) {
-          console.log(data)
-        },
-        someEvent: function(data) {
-          console.log(data)
-        }
-      },
-      success: function(res) {
-        // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
-      }
     })
   }
 })

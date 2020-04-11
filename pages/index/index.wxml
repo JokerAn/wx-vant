@@ -1,5 +1,15 @@
 <!--index.wxml-->
+<wxs module="filters" src="../../filters/index.wxs"></wxs>
+
 <view class="container">
+性别：{{filters.sex(1)}}
+<view>
+自定义组件 {{nowTime}}
+  <test-component   inner-text="Some text" Objects="{{personInfo}}">
+  <view slot="postion-1">postion-1</view>
+  <view slot="postion-2">postion-2</view>
+  </test-component>
+</view>
   <view>
     <van-button type="primary" bind:click="showPopup">弹出弹框</van-button>
     <van-button plain type="primary" bind:click="showPopup2">弹出弹框2</van-button>
